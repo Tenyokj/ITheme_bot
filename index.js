@@ -1,6 +1,17 @@
 const { Telegraf, Markup }= require( "telegraf" );
 const dotenv = require("dotenv");
 dotenv.config();
+const express = require( "express" );
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => res.send("Bot is running!"));
+
+// Нужен только для Render — сам бот работает отдельно
+app.listen(PORT, () => {
+  console.log(`HTTP server running on port ${PORT}`);
+});
+
 
 const token = process.env.BOT_TOKEN;
 const admin = process.env.ADMIN_ID;
